@@ -7,13 +7,16 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         int choice;
+        int numberOfZeros;
         int [][] sudoku = new int[9][9];
         Scanner scanner = new Scanner(System.in);
         FileScanner fileScanner = new FileScanner();
         Displayer displayer = new Displayer();
+        Counter counter = new Counter();
+        SudokuLevel sudokuLevel = new SudokuLevel();
 
         while (true) {
-            System.out.println("Meniu pasirinkimai:");
+            System.out.println("\n \n Meniu pasirinkimai:");
             System.out.println("1. Įkelti naują sudokų schemą");
             System.out.println("2. Atvaizduoti naują, įkeltą sudokų schemą");
             System.out.println("3. Priskirti lygį sudoku schemai");
@@ -34,10 +37,11 @@ public class Main {
                     displayer.displaySudokuSchema(sudoku);
                     break;
                 case 3:
-                    System.out.println("trečias");
+                    numberOfZeros = counter.countZeros(sudoku);
+                    System.out.println("Šios sudoku schemos lygis yra " + sudokuLevel.sudokuLevelSetting(numberOfZeros));
                     break;
                 case 4:
-                    System.out.println("Išjungiama...4");
+                    System.out.println("Išjungiama...");
                     System.exit(0);
                 default:
                     System.out.println("Blogas pasirinkimas! Įsitikinkite ar teisingai pasirinkote. \n \n");
