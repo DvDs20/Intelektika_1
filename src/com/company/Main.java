@@ -1,12 +1,14 @@
 package com.company;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         int choice;
         Scanner scanner = new Scanner(System.in);
+        FileScanner fileScanner = new FileScanner();
 
         while (true) {
             System.out.println("Meniu pasirinkimai:");
@@ -19,7 +21,11 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.println("pirmas");
+                    Scanner scannerForURL = new Scanner(System.in);
+                    System.out.println("Įveskite naujai sukurtos sudoku schemos nuorodą:");
+                    String URL = scannerForURL.nextLine();
+                    fileScanner.txtFileScanner(URL);
+                    System.out.println("Nauja sudoku schema įkelta į programą! \n \n");
                     break;
                 case 2:
                     System.out.println("antras");
