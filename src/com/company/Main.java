@@ -7,8 +7,10 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         int choice;
+        int [][] sudoku = new int[9][9];
         Scanner scanner = new Scanner(System.in);
         FileScanner fileScanner = new FileScanner();
+        Displayer displayer = new Displayer();
 
         while (true) {
             System.out.println("Meniu pasirinkimai:");
@@ -24,11 +26,12 @@ public class Main {
                     Scanner scannerForURL = new Scanner(System.in);
                     System.out.println("Įveskite naujai sukurtos sudoku schemos nuorodą:");
                     String URL = scannerForURL.nextLine();
-                    fileScanner.txtFileScanner(URL);
+                    sudoku = fileScanner.txtFileScanner(URL);
                     System.out.println("Nauja sudoku schema įkelta į programą! \n \n");
                     break;
                 case 2:
-                    System.out.println("antras");
+                    System.out.println("Naujai įkelta sudoku schema: \n");
+                    displayer.displaySudokuSchema(sudoku);
                     break;
                 case 3:
                     System.out.println("trečias");
